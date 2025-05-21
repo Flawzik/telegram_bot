@@ -34,12 +34,12 @@ async def reg_one(message: Message, state: FSMContext):
 async def reg_two(message: Message, state: FSMContext):
     await state.update_data(name=message.text)
     await state.set_state(Reg.age)
-    await message.reply('📅 Сколько вам лет?')
+    await message.answer('📅 Сколько вам лет?')
 
 @router.message(Reg.age)
 async def handle_age(message: Message, state: FSMContext):
     if not message.text.isdigit():
-        await message.reply("❗ Пожалуйста, введите число!")
+        await message.answer("❗ Пожалуйста, введите число!")
         return
     
     age = int(message.text)
@@ -63,7 +63,7 @@ async def reg_four(message: Message, state: FSMContext):
 async def reg_five(message: Message, state: FSMContext):
     await state.update_data(city=message.text)
     await state.set_state(Reg.whoyouwan)
-    await message.reply(
+    await message.answer(
         '❔ Кто вас интересуют?',
         reply_markup=kb.whoyowan  
     )
@@ -129,7 +129,7 @@ async def cmd_start(message: Message):
 '''
 @router.message(F.text == 'Смотреть анкеты 💞')    
 async def roum_prof(message: Message):
-    await message.answer('Фото')
+    await message.answer('Фото',reply_markup=kb.react)
 
 @router.message(F.text == 'Моя анкета 👤')    
 async def my_prof(message: Message):
@@ -168,6 +168,11 @@ async def back_handler(callback: CallbackQuery):
 @router.message(F.text == 'Подписка 👑')    
 async def pay_subscription(message: Message):
     await message.answer('Подписка', reply_markup=kb.menu)
+
+@router.message(F.text == '⬅️')    
+async def pay_subscription(message: Message):
+    await message.answer('Подождем пока кто-то увидит твою анкету',reply_markup=kb.main)
+        #reply_markup=ReplyKeyboardRemove() )
 
 
 
