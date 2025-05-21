@@ -1,7 +1,7 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.utils.keyboard import ReplyKeyboardBuilder, InlineKeyboardBuilder
 
-# Добавим inline-клавиатуру для профиля
+
 prof = InlineKeyboardMarkup(
     inline_keyboard=[
         [
@@ -15,7 +15,7 @@ prof = InlineKeyboardMarkup(
     ]
 )
 
-# Основная клавиатура
+
 main = ReplyKeyboardMarkup(
     keyboard=[
         [KeyboardButton(text='Смотреть анкеты 💞'), KeyboardButton(text='Моя анкета 👤')],
@@ -25,7 +25,7 @@ main = ReplyKeyboardMarkup(
     input_field_placeholder="Выберите пункт меню"
 )
 
-# Клавиатура для подписки
+
 menu = InlineKeyboardMarkup(
     inline_keyboard=[
         [InlineKeyboardButton(text='Оплата подписки', url='https://www.youtube.com/watch?v=HYi4a2eZL50')]
@@ -46,6 +46,14 @@ whoyowan= ReplyKeyboardMarkup(
     keyboard=[
         [KeyboardButton(text='Парни'), KeyboardButton(text='Девушки')]
         ],
+    resize_keyboard=True,
+    input_field_placeholder="Выберите пункт меню"
+)
+
+react=ReplyKeyboardMarkup(
+    keyboard=[
+        [KeyboardButton(text='❤️'), KeyboardButton(text='💌'), KeyboardButton(text='💔') , KeyboardButton(text='⬅️')]
+    ],
     resize_keyboard=True,
     input_field_placeholder="Выберите пункт меню"
 )
