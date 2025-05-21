@@ -1,12 +1,18 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.utils.keyboard import ReplyKeyboardBuilder, InlineKeyboardBuilder
 
-prof = ReplyKeyboardMarkup(
-    keyboard=[
-        [KeyboardButton(text='1'), KeyboardButton(text='2')],
-        [KeyboardButton(text='3'), KeyboardButton(text='4')]
-    ],
-    resize_keyboard=True
+# Добавим inline-клавиатуру для профиля
+prof = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+            InlineKeyboardButton(text='1', callback_data='btn1'),
+            InlineKeyboardButton(text='2', callback_data='btn2')
+        ],
+        [
+            InlineKeyboardButton(text='3', callback_data='btn3'),
+            InlineKeyboardButton(text='4', callback_data='back')  # Кнопка "Назад" с callback
+        ]
+    ]
 )
 
 # Основная клавиатура
@@ -26,14 +32,20 @@ menu = InlineKeyboardMarkup(
     ]
 )
 
-# Клавиатура для профиля (исправлено название и параметры)
 
-'''     
-shalavi=['Shluha_1','shluha_2']
+sex= ReplyKeyboardMarkup(
+    keyboard=[
+        [KeyboardButton(text='Парень'), KeyboardButton(text='Девушка')]
+        ],
+    resize_keyboard=True,
+    input_field_placeholder="Выберите пункт меню"
+)
 
-async def inline_shalavi():
-    keyboard = InlineKeyboardBuilder()
-    for shalavi in shalavi:
-        keyboard.add(InlineKeyboardButton(text=shalavi))
-    return keyboard.adjust(2).as_markup    
-  '''
+
+whoyowan= ReplyKeyboardMarkup(
+    keyboard=[
+        [KeyboardButton(text='Парни'), KeyboardButton(text='Девушки')]
+        ],
+    resize_keyboard=True,
+    input_field_placeholder="Выберите пункт меню"
+)
